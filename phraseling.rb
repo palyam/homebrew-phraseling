@@ -6,12 +6,12 @@ class Phraseling < Formula
   license "MIT"
   version "1.0.0"
 
-  depends_on "ollama"
+# depends_on "ollama"  # Optional dependency
 
   def install
     bin.install "bin/phraseling"
 
-    # Install shortcut template
+    # Install shortcut template for manual setup
     pkgshare.install "shortcuts/Phraseling.shortcut"
 
     # Install documentation
@@ -23,17 +23,22 @@ class Phraseling < Formula
     puts "✨ Phraseling installed successfully!"
     puts ""
     puts "📋 Next steps:"
-    puts "1. Install a language model:"
+    puts "1. Install Ollama and a language model:"
+    puts "   brew install ollama"
     puts "   ollama pull gpt-oss:latest"
     puts ""
-    puts "2. Import Mac shortcut:"
-    puts "   open #{pkgshare}/Phraseling.shortcut"
-    puts ""
-    puts "3. Test the tool:"
+    puts "2. Test the command line tool:"
     puts "   phraseling \"hello world\""
     puts ""
-    puts "📖 Documentation: phraseling --help"
-    puts "🔧 Configuration: phraseling --config"
+    puts "3. Set up Mac shortcut (optional):"
+    puts "   • Open Shortcuts app"
+    puts "   • Create new shortcut"
+    puts "   • Add 'Run Shell Script' action"
+    puts "   • Paste: echo \"$1\" | xargs phraseling"
+    puts "   • Set input to 'Shortcut Input'"
+    puts "   • Save as 'Phraseling'"
+    puts ""
+    puts "📖 Full documentation: https://github.com/palyam/phraseling"
     puts ""
   end
 
